@@ -1,11 +1,15 @@
-console.log('Log from /client/main.js');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Meteor} from 'meteor/meteor';
 
-// import './../imports/utils.js';
-import any_name_default_var, {say_hello, name} from './../imports/utils.js';
+Meteor.startup(function(){
+	let name = 'newman';
+	let jsx = (
+				<div>
+					<p>this is from the main.js</p>
+					<p>Hello {name}</p>
+				</div>
+				);
 
-console.log(any_name_default_var);
-
-/*
-console.log(say_hello());
-console.log(name);
-*/
+	ReactDOM.render(jsx, document.getElementById('content'));
+});
