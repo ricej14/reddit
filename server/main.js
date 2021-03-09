@@ -1,19 +1,14 @@
-console.log('Log from /server/main.js');
+import {Meteor} from 'meteor/meteor';
+import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
-// import './../imports/utils.js';
-/*
-import default_any_name from './../imports/utils.js';
-
-console.log(default_any_name)
-/*
-import {say_hello} from './../imports/utils.js';
-import {add} from './../imports/math.js';
-
-console.log(say_hello());
-
-console.log(add(5, 3));
-*/
-
-import any_name_default from './../imports/math.js';
-
-console.log(any_name_default(7, 2));
+Meteor.startup(function(){
+	UP_Collection_Access.insert({
+		topic: 'dog',
+		votes: 9
+	});
+	UP_Collection_Access.insert({
+		topic: 'birds',
+		votes: 11
+	});
+	console.log(UP_Collection_Access.find().fetch());
+});
