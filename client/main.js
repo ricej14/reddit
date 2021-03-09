@@ -12,6 +12,10 @@ const renderPosts = function(passed_posts) {
 };
 
 Meteor.startup(function(){
+	UP_Collection_Access.insert({
+		topic: 'kids',
+		votes: 5
+	});
 	Tracker.autorun(function(){
 		const posts = UP_Collection_Access.find().fetch();
 		let title = '441 reddit';
