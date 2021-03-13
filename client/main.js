@@ -16,14 +16,14 @@ const processFormDataFunction = function(event){
 	let newTopic = event.target.formInputNameAttribute.value;
 	if (newTopic){
 		event.target.formInputNameAttribute.value = '';
+		UP_Collection_Access.insert({
+			topic: newTopic,
+			votes: 0
+		});
 	};
 };
 
 Meteor.startup(function(){
-	UP_Collection_Access.insert({
-		topic: 'kids',
-		votes: 5
-	});
 	Tracker.autorun(function(){
 		const allPostsInDB = UP_Collection_Access.find().fetch();
 		let title = '441 reddit';
