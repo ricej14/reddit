@@ -11,19 +11,30 @@ const renderPosts = function(passed_posts) {
 	return formattedPosts;
 };
 
+const processFormDataFunction = function(event){
+	event.preventDefault();
+	let newTopic = event.target.formInputNameAttribute.value;
+	if (newTopic){
+		event.target.formInputNameAttribute.value = '';
+	};
+};
+
 Meteor.startup(function(){
 	UP_Collection_Access.insert({
 		topic: 'kids',
 		votes: 5
 	});
 	Tracker.autorun(function(){
-		const posts = UP_Collection_Access.find().fetch();
+		const allPostsInDB = UP_Collection_Access.find().fetch();
 		let title = '441 reddit';
 		let jsx = (
 					<div>
 						<h1>{title}</h1>
-						{/*renderPosts('hello')*/}
-						{renderPosts(posts)}
+						<form onSubmit={processFormDataFunction}>
+							<input type='text' name='formInputNameAttribute' placeholder='Topic Name'/>
+							<button>Add Topic</button>
+						</form>
+						{renderPosts(allPostsInDB)}
 					</div>
 					);
 		ReactDOM.render(jsx, document.getElementById('content'));
