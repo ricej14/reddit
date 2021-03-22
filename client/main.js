@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
-const renderPosts = function(passed_posts) {
+const renderPosts = (passed_posts) => {
 	//console.log(passed_posts);
-	let formattedPosts = passed_posts.map(function(post) {
+	let formattedPosts = passed_posts.map((post) => {
 		return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
 	});
 	return formattedPosts;
 };
 
-const processFormDataFunction = function(event){
+const processFormDataFunction = (event) => {
 	event.preventDefault();
 	let newTopic = event.target.formInputNameAttribute.value;
 	if (newTopic){
@@ -23,8 +23,8 @@ const processFormDataFunction = function(event){
 	};
 };
 
-Meteor.startup(function(){
-	Tracker.autorun(function(){
+Meteor.startup(() => {
+	Tracker.autorun(() => {
 		const allPostsInDB = UP_Collection_Access.find().fetch();
 		let title = '441 reddit';
 		let jsx = (
