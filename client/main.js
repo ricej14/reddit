@@ -4,7 +4,7 @@ import {Meteor} from 'meteor/meteor';
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
 const renderPosts = function(passed_posts) {
-	console.log(passed_posts);
+	//console.log(passed_posts);
 	let formattedPosts = passed_posts.map(function(post) {
 		return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
 	});
