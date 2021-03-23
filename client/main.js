@@ -8,9 +8,15 @@ const renderPosts = (passed_posts) => {
 	let formattedPosts = passed_posts.map((post) => {
 		return (
 			<p key={post._id}>{post.topic} have {post.votes} vote[s] {''}
-			<button onClick={() => {
-				UP_Collection_Access.remove({_id: post._id})
-			}}>X</button>
+				<button onClick={() => {
+					UP_Collection_Access.update({_id: post._id}, {$inc: {votes: 1}})
+				}}>+1</button>
+				<button onClick={() => {
+					UP_Collection_Access.update({_id: post._id}, {$inc: {votes: -1}})
+				}}>-1</button>
+				<button onClick={() => {
+					UP_Collection_Access.remove({_id: post._id})
+				}}>X</button>
 			</p>
 		);
 	});
