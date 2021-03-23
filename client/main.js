@@ -6,7 +6,13 @@ import {UP_Collection_Access} from './../imports/api/user_posts.js';
 const renderPosts = (passed_posts) => {
 	//console.log(passed_posts);
 	let formattedPosts = passed_posts.map((post) => {
-		return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
+		return (
+			<p key={post._id}>{post.topic} have {post.votes} vote[s] {''}
+			<button onClick={() => {
+				UP_Collection_Access.remove({_id: post._id})
+			}}>X</button>
+			</p>
+		);
 	});
 	return formattedPosts;
 };
