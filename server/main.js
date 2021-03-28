@@ -56,4 +56,16 @@ Meteor.startup(() => {
 	console.log(me8.getPersonDescription());
 	let me9 = new Employee3('pam', 88);
 	console.log(me9.getPersonDescription());
+
+	class Programmer extends Person5 {
+		constructor(name, age, language = 'cobol') {
+			super(name, age);
+			this.language = language;
+		}
+		getGreeting() {
+			return `I am ${this.name}, I am ${this.age}, and I like to program in ${this.language}`;
+		}
+	};
+	let me10 = new Programmer('john', 23, 'python');
+	console.log(me10.getGreeting());
 });
