@@ -2,40 +2,6 @@ import {Meteor} from 'meteor/meteor';
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
 Meteor.startup(() => {
-	class Person {
-
-	};
-	let me = new Person();
-	console.log(me);
-
-	class Person2 {
-		constructor(name) {
-			this.name = name;
-		}
-	};
-	let me2 = new Person2('Michael');
-	console.log(me2);
-
-	class Person3 {
-		constructor(name = 'anonymous') {
-			this.name = name;
-		}
-	};
-	let me3 = new Person3();
-	let me3b = new Person3('passed name');
-	console.log(me3, me3b);
-
-	class Person4 {
-		constructor(name = 'anonymous') {
-			this.name = name;
-		}
-		getGreeting() {
-			return `hi, I am ${this.name}`;
-		}
-	};
-	let me4 = new Person4('michael');
-	console.log(me4.getGreeting());
-
 	class Person5 {
 		constructor(name = 'anonymous', age = 0) {
 			this.name = name;
@@ -48,7 +14,46 @@ Meteor.startup(() => {
 			return `${this.name} is ${this.age}`;
 		}
 	};
+
+	class Employee extends Person5 {
+
+	};
+
 	let me5 = new Person5('newman', 23);
 	console.log(me5.getGreeting());
 	console.log(me5.getPersonDescription());
+
+	let me6 = new Employee('chris', 44);
+	console.log(me6.getPersonDescription());
+
+	class Employee2 extends Person5 {
+		constructor(name, age, title) {
+			super(name, age);
+			this.title = title;
+		}
+		hasJob() {
+			return !!this.title;
+		}
+	};
+	let me7 = new Employee2('pat', 55, 'driver');
+	console.log(me7.getPersonDescription());
+	console.log('has job:', me7.hasJob());
+
+	class Employee3 extends Person5 {
+		constructor(name, age, title) {
+			super(name, age);
+			this.title = title;
+		}
+		getPersonDescription() {
+			if(this.title) {
+				return `hi, this is ${this.name} and I am a[n] ${this.title}`;
+			} else {
+				return super.getPersonDescription();
+			}
+		}
+	};
+	let me8 = new Employee3('des', 19, 'actor');
+	console.log(me8.getPersonDescription());
+	let me9 = new Employee3('pam', 88);
+	console.log(me9.getPersonDescription());
 });
