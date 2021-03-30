@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {UP_Collection_Access} from './../api/user_posts.js';
 
 export default class RenderPost extends React.Component{
@@ -20,4 +21,8 @@ export default class RenderPost extends React.Component{
 			</>
 		);
 	}
+};
+
+RenderPost.propTypes = {
+	post_prop_obj: PropTypes.object.isRequired
 };
