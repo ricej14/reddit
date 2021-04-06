@@ -6,7 +6,7 @@ import App from './../imports/ui/App.js';
 
 Meteor.startup(() => {
 	Tracker.autorun(() => {
-		const allPostsInDB = UP_Collection_Access.find().fetch();
+		const allPostsInDB = UP_Collection_Access.find({}, {sort: {votes: -1}}).fetch();
 		let title = '441 reddit';
 
 		ReactDOM.render(<App
