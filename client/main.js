@@ -13,6 +13,7 @@ Meteor.startup(() => {
 			passedPropTitle={title}
 			passedPropModerator={'newman'}
 			passedPropAllPosts={allPostsInDB}
+			passedFooter={'\u00A9 441 reddit'}
 		/>, document.getElementById('content'));
 	});
 });
