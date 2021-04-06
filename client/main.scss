@@ -1,0 +1,9 @@
+body {
+  	background-color: grey;
+}
+
+$blue: blue;
+
+* {
+	color: $blue;
+}
