@@ -6,14 +6,14 @@ export default class RenderPost extends React.Component{
 	render() {
 		return(
 			<>
-				<div key={this.props.post_prop_obj._id} className='singleItemStyle'>
-					<button onClick={() => {
+				<div key={this.props.post_prop_obj._id} className='single-block-item-style'>
+					<button className='button button--round' onClick={() => {
 						UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: 1}})
 					}}>+1</button>
-					<button onClick={() => {
+					<button className='button button--round' onClick={() => {
 						UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: -1}})
 					}}>-1</button>
-					<button onClick={() => {
+					<button className='button button--round' onClick={() => {
 						UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
 					}}>X</button>
 					{this.props.post_prop_obj.topic} have {this.props.post_prop_obj.votes} vote[s] {''}
