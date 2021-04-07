@@ -7,16 +7,23 @@ export default class RenderPost extends React.Component{
 		return(
 			<>
 				<div key={this.props.post_prop_obj._id} className='single-block-item-style'>
-					<button className='button button--round' onClick={() => {
-						UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: 1}})
-					}}>+1</button>
-					<button className='button button--round' onClick={() => {
-						UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: -1}})
-					}}>-1</button>
-					<button className='button button--round' onClick={() => {
-						UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
-					}}>X</button>
-					{this.props.post_prop_obj.topic} have {this.props.post_prop_obj.votes} vote[s] {''}
+					<div className='post'>
+						<div>
+							<h3 className='post__topic'>{this.props.post_prop_obj.topic}</h3>
+							<p className='post__stats'>have {this.props.post_prop_obj.votes} vote[s] {''}</p>
+						</div>
+						<div className='post__actions'>
+							<button className='button button--round' onClick={() => {
+								UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: 1}})
+							}}>+1</button>
+							<button className='button button--round' onClick={() => {
+								UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes: -1}})
+							}}>-1</button>
+							<button className='button button--round' onClick={() => {
+								UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
+							}}>X</button>
+						</div>
+					</div>
 				</div>
 			</>
 		);
