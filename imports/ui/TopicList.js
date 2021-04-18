@@ -1,6 +1,7 @@
 import React from 'react';
 import RenderPost from './RenderPost.js';
 import PropTypes from 'prop-types';
+import FlipMove from 'react-flip-move';
 
 export default class TopicList extends React.Component {
 	renderAllPosts() {
@@ -21,7 +22,12 @@ export default class TopicList extends React.Component {
 	render() {
 		return (
 			<>
-				{this.renderAllPosts()}
+				<FlipMove delay={500}
+				                maintainContainerHeight={true}
+							 leaveAnimation='accordianVertical'
+							 enterAnimation='fade'>
+					{this.renderAllPosts()}
+				</FlipMove>
 			</>
 		)
 	}

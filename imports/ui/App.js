@@ -13,7 +13,7 @@ export default class App extends React.Component {
 					title={this.props.passedPropTitle}
 					moderator={this.props.passedPropModerator} />
 				<div className='wrapper'>
-					<AddTopics />
+					<AddTopics/>
 					<TopicList passed_posts={this.props.passedPropAllPosts}/>
 				</div>
 				<Footer footerText={this.props.passedFooter} />
